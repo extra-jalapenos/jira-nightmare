@@ -1,12 +1,11 @@
 class APIClient {
 	constructor(baseUrl) {
 		this.baseUrl = baseUrl;
-		const { username, personalAccessToken } = process.env
-		if (!username || !personalAccessToken) {
-			console.error("no username and or personal access token provided -- are you sure this is correct?")
+		const { personalAccessToken } = process.env
+		if (!personalAccessToken) {
+			console.error("no personal access token provided -- are you sure this is correct?")
 			this.authorization = null
 		} else {
-			const bearerToken = btoa(`${username}:${personalAccessToken}`)
 			this.authorization = `Bearer ${personalAccessToken}`
 		}
 	}
