@@ -1,0 +1,23 @@
+{
+  "name": "jira-nightmare",
+  "version": "1.0.0",
+  "description": "A repo that intends to set up a jira client to mass-change issues etc.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --env-file=.env index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/extra-jalapenos/jira-nightmare.git"
+  },
+  "keywords": [
+    "jira"
+  ],
+  "author": "Alexandria Douillette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/extra-jalapenos/jira-nightmare/issues"
+  },
+  "homepage": "https://github.com/extra-jalapenos/jira-nightmare#readme"
+}
