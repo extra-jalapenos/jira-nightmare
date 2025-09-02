@@ -7,7 +7,7 @@ class APIClient {
 			this.authorization = null
 		} else {
 			const bearerToken = btoa(`${username}:${personalAccessToken}`)
-			this.authorization = `Bearer ${bearerToken}`
+			this.authorization = `Bearer ${personalAccessToken}`
 		}
 	}
 
@@ -55,12 +55,13 @@ class APIClient {
 	}
 
 	async getMyself () {
-		return this.makeRequest("/rest/api/3/myself", "GET")
+		const result = await this.makeRequest("/rest/api/latest/myself", "GET")
+		console.log(`Hi ${result.emailAddress}!`)
+		return result
 	}
 }
 
 const { baseUrl } = process.env
-console.log(process.env)
 if (!baseUrl) throw new Error("baseUrl is not defined!")
 const JiraClient = new APIClient(baseUrl)
 export default JiraClient
