@@ -1,7 +1,7 @@
 class APIClient {
 	constructor(baseUrl) {
 		this.baseUrl = baseUrl;
-		const { username, personalAccessToken } = process.env()
+		const { username, personalAccessToken } = process.env
 		if (!username || !personalAccessToken) {
 			console.error("no username and or personal access token provided -- are you sure this is correct?")
 			this.authorization = null
@@ -25,7 +25,7 @@ class APIClient {
 			credentials: "include"
 		}
 
-		if (this.authorization) options.headers.append("Authorization", this.authorization)
+		if (this.authorization) options.headers["Authorization"] = this.authorization
 
 		const response = await fetch(`${this.baseUrl}${uri}`, options)
 
@@ -42,21 +42,25 @@ class APIClient {
 		} catch (error) {
 			console.error(error.message)
 
-			let textBody = await error.text()
-			let returnError = new Error()
-			try {
-				const jsonMessage = await JSON.parse(textBody)
-				returnError.message = jsonMessage.message
-			} catch (e) {
-				console.error(e.message)
-				returnError.message = textBody
-			}
-			return returnError
+			// let returnError = new Error()
+			// try {
+			// 	const jsonMessage = await JSON.parse(error.text())
+			// 	returnError.message = jsonMessage.message
+			// } catch (e) {
+			// 	console.error(e.message)
+			// 	returnError.message = textBody
+			// }
+			return error
 		}
+	}
+
+	async getMyself () {
+		return this.makeRequest("/rest/api/3/myself", "GET")
 	}
 }
 
-const { baseUrl } = process.env()
-if (!baseUrl) throw new Error("base url is not defined!")
-const JIRA_Client = new APIClient(baseUrl)
-export default JIRA_Client
+const { baseUrl } = process.env
+console.log(process.env)
+if (!baseUrl) throw new Error("baseUrl is not defined!")
+const JiraClient = new APIClient(baseUrl)
+export default JiraClient
