@@ -49,6 +49,14 @@ class APIClient {
 		console.log(`Hi ${result.emailAddress}!`)
 		return result
 	}
+
+	async getJQL (startAt, maxResults, jql, fields="id,summary") {
+		return await this.makeRequest(`/rest/api/latest/search?expand=&jql=${jql}&fields=${fields}&maxResults=${maxResults}&startAt=${startAt}`, "GET")
+	}
+
+	async putIssue(idOrKey, body) {
+		return await this.makeRequest(`/rest/api/latest/issue/${idOrKey}`, "PUT", body)
+	}
 }
 
 const { baseUrl } = process.env
