@@ -1,6 +1,7 @@
 {
   "name": "jira-nightmare",
   "version": "1.0.0",
+  "type": "module",
   "description": "A repo that intends to set up a jira client to mass-change issues etc.",
   "main": "index.js",
   "scripts": {
