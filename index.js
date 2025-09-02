@@ -1,10 +1,10 @@
 import JiraClient from "./JiraApi.js"
 
-// const test = await JiraClient.getMyself()
-// console.log(test)
+// const disU = await JiraClient.getMyself()
+// console.log(disU)
 
-// const test2 = await JiraClient.getJQL(0,10,"project = DATZ ORDER BY created ASC")
-// console.log(test2)
+// const simpleJQL = await JiraClient.getJQL(0,10,"project = ABC ORDER BY created ASC")
+// console.log(simpleJQL)
 
-const updateIssued = await JiraClient.putIssue("DATZ-692", { "fields": { "summary": "hey from the API" }})
-console.log(updateIssued)
+const updatedIssue = await JiraClient.putIssue("ABC-123", { "fields": { "summary": "hey from the API" }})
+console.log(updatedIssue)
