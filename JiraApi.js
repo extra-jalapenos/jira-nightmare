@@ -41,15 +41,6 @@ class APIClient {
 
 		} catch (error) {
 			console.error(error.message)
-
-			// let returnError = new Error()
-			// try {
-			// 	const jsonMessage = await JSON.parse(error.text())
-			// 	returnError.message = jsonMessage.message
-			// } catch (e) {
-			// 	console.error(e.message)
-			// 	returnError.message = textBody
-			// }
 			return error
 		}
 	}
